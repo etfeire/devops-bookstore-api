@@ -12,22 +12,13 @@ workflows:
           args: '--dev'
           pkg-manager: pipenv
           test-tool: unittest 
-      - verify-install:
-          executor: azure-cli/default
-          steps:
-            - azure-cli/install
-            - run:
-                command: az -v
-                name: Verify Azure CLI is installed
       - login-to-azure:
         executor: azure-cli/default
         steps:
         - azure-cli/install
-          # - azure-cli/login-with-user:
-          #     alternate-tenant: true
+          azure-cli/login-with-user
         - run:
-            command: az resource list
-            name: List resources of tenant stored as `AZURE_TENANT` env var
+            command: az login
       - azure-acr/build-and-push-image:
           login-server-name: devopsupskillCR.azurecr.io
           registry-name: devopsupskillCR
@@ -35,5 +26,4 @@ workflows:
           tag: '1.$CIRCLE_BUILD_NUM'
           requires:
             - "python/test"
-            - "verify-install"
-            - "login-to-az"
+            - "login-to-azure"
