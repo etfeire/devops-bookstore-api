@@ -26,4 +26,4 @@ workflows:
           tag: '1.$CIRCLE_BUILD_NUM'
           requires:
             - "python/test"
-            - "login-to-azure"
+            - "azure-cli/login-to-azure"
