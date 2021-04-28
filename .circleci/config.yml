@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.3.3
-  azure-cli: circleci/azure-cli@1.1.0
+  # azure-cli: circleci/azure-cli@1.1.0
   azure-acr: circleci/azure-acr@0.2.0
 
 workflows:
@@ -12,13 +12,13 @@ workflows:
           args: '--dev'
           pkg-manager: pipenv
           test-tool: unittest 
-      - azure-cli/login-to-azure:
-        executor: azure-cli/default
-        steps:
-        - azure-cli/install
-          azure-cli/login-with-user
-        - run:
-            command: az login
+      # - azure-cli/login-to-azure:
+      #   executor: azure-cli/default
+      #   steps:
+      #   - azure-cli/install
+      #     azure-cli/login-with-user
+      #   - run:
+      #       command: az login
       - azure-acr/build-and-push-image:
           login-server-name: devopsupskillCR.azurecr.io
           registry-name: devopsupskillCR
@@ -26,4 +26,4 @@ workflows:
           tag: '1.$CIRCLE_BUILD_NUM'
           requires:
             - "python/test"
-            - "azure-cli/login-to-azure"
+            #- "azure-cli/login-to-azure"
