@@ -12,7 +12,7 @@ workflows:
           args: '--dev'
           pkg-manager: pipenv
           test-tool: unittest 
-      - login-to-azure:
+      - azure-cli/login-to-azure:
         executor: azure-cli/default
         steps:
         - azure-cli/install
