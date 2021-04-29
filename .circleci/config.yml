@@ -6,7 +6,6 @@ orbs:
 
 workflows:
   test-build-push-image:
-@@ -10,3 +11,10 @@ workflows:
           args: '--dev'
           pkg-manager: pipenv
           test-tool: unittest 
