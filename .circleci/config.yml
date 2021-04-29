@@ -6,6 +6,8 @@ orbs:
 
 workflows:
   test-build-push-image:
+      jobs:
+      - python/test:
           args: '--dev'
           pkg-manager: pipenv
           test-tool: unittest 
