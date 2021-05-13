@@ -14,7 +14,7 @@ workflows:
       - azure-acr/build-and-push-image:
           login-server-name: devopsupskillregistrywsnrr.azurecr.io
           registry-name: devopsupskillregistrywsnrr
-          repo: devops-bookstore-api
+          repo: devopsupskill/devops-bookstore-api
           tag: '1.$CIRCLE_BUILD_NUM'
           requires:
             - "python/test"
