@@ -12,8 +12,8 @@ workflows:
           pkg-manager: pipenv
           test-tool: unittest 
       - azure-acr/build-and-push-image:
-          login-server-name: devopsupskillregistrybyeao.azurecr.io
-          registry-name: devopsupskillregistrybyeao
+          login-server-name: devopsupskillregistrywsnrr.azurecr.io
+          registry-name: devopsupskillregistrywsnrr
           repo: devops-bookstore-api
           tag: '1.$CIRCLE_BUILD_NUM'
           requires:
